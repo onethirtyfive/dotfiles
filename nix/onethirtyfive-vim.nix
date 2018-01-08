@@ -41,6 +41,7 @@ vim_configurable.customize {
         "vim-ack"
         "vim-json"
         "vim-addon-nix"
+        "vim-nix"
         # "vim-stylish-haskell"
       ];
     }
