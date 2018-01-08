@@ -14,6 +14,10 @@ alias rmswp="find . -name *.swp | xargs rm"
 alias be="bundle exec"
 alias bert="bundle exec rake"
 
+function fix-font {
+  setfont latarcyrheb-sun32
+}
+
 function fix-keys {
   gsettings set org.gnome.desktop.peripherals.keyboard delay 250
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 7
