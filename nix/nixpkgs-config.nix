@@ -15,5 +15,10 @@ in
   packageOverrides = pkgs: rec {
     onethirtyfiveDevenv = otfDevenv;
   };
+
+  pidgin = {
+    openssl = true;
+    gnutls = true;
+  };
 }
 
