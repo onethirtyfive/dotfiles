@@ -25,6 +25,7 @@ buildEnv {
     gitAndTools.gitFull
     gitAndTools.tig
 
+    keybase
     (pidgin.override { plugins = [ pidginotr ]; })
   ];
 }
