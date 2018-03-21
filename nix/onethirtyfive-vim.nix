@@ -23,6 +23,15 @@ let
       sha256 = "0011dfvp78zh2ggs9mzdaby2fm372lrz1j9y2ffbxkv6ygmwmwan";
     };
   };
+
+  vimTerraform = buildVimPluginFrom2Nix {
+    name = "vim-terraform";
+    src = fetchgit {
+      url = git://github.com/hashivim/vim-terraform;
+      rev = "76799270813db362b13a56f26cd34f668e9e17a4";
+      sha256 = "0j3cnnvhs41phz0kiyaprp05vxhf5jaaw5sn5jcn08yc6jhy009r";
+    };
+  };
 in
 vim_configurable.customize {
   name = "onethirtyfive-vim";
@@ -30,6 +39,7 @@ vim_configurable.customize {
   vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // {
     "vim-ack" = vimAck;
     "vim-json" = vimJson;
+    "vim-terraform" = vimTerraform;
   };
   vimrcConfig.vam.pluginDictionaries = [
     {
@@ -42,6 +52,7 @@ vim_configurable.customize {
         "vim-json"
         "vim-addon-nix"
         "vim-nix"
+        "vim-terraform"
         # "vim-stylish-haskell"
       ];
     }
