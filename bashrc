@@ -29,3 +29,5 @@ PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
 GIT_PS1_SHOWSTASHSTATE='true'
 GIT_PS1_SHOWCOLORHINTS='true'
 
+# disable freeze on ctrl-s
+stty -ixon
