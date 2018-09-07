@@ -18,6 +18,11 @@ function fix-font {
   setfont latarcyrheb-sun32
 }
 
+function game-keys {
+  gsettings set org.gnome.desktop.peripherals.keyboard delay 250
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 100
+}
+
 function fix-keys {
   gsettings set org.gnome.desktop.peripherals.keyboard delay 250
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 7
