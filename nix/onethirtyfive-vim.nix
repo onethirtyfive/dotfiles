@@ -6,21 +6,39 @@ let
   homeDir = builtins.getEnv "HOME";
   vimrcFile = "${homeDir}/.vimrc";
 
+  dhallVim = buildVimPluginFrom2Nix {
+    name = "dhall-vim";
+    src = fetchgit {
+      url = "https://github.com/vmchale/dhall-vim.git";
+      rev = "2693bfaf9167ac69ee96c1165b4354f03f4d8b24";
+      sha256 = "0qm6z8z70cxqqlmxgq497w96nv5sn2gbxnc74balbhpk17bms4m0";
+    };
+  };
+
   vimAck = buildVimPluginFrom2Nix {
     name = "vim-ack";
     src = fetchgit {
-      url = git://github.com/mileszs/ack.vim.git;
-      rev = "6e04746a63dd2453601ae36c83d53fe2021a45f4";
-      sha256 = "0453ghmaaqwv6z8a3sncd3jxs9j050sp9ymiw2aqpc1a28kdlrv8";
+      url = "https://github.com/mileszs/ack.vim.git";
+      rev = "36e40f9ec91bdbf6f1adf408522a73a6925c3042";
+      sha256 = "0yppr89hd1jyp0pj56hxdjbn32sr7pj3mihd18wxispvl5dqd6fm";
+    };
+  };
+
+  vimCSS3Syntax = buildVimPluginFrom2Nix {
+    name = "vim-css3-syntax";
+    src = fetchgit {
+      url = "https://github.com/hail2u/vim-css3-syntax.git";
+      rev = "f18eabedc062e974e991db10d911788a3a3c216f";
+      sha256 = "05srcglf521n5670dszh559lmvsc4bl7k4msikix1a996qghnm49";
     };
   };
 
   vimJson = buildVimPluginFrom2Nix {
     name = "vim-json";
     src = fetchgit {
-      url = git://github.com/elzr/vim-json.git;
-      rev = "a05984fbf7a668361607b091d271b81fa34c7c83";
-      sha256 = "0011dfvp78zh2ggs9mzdaby2fm372lrz1j9y2ffbxkv6ygmwmwan";
+      url = "https://github.com/elzr/vim-json.git";
+      rev = "3727f089410e23ae113be6222e8a08dd2613ecf2";
+      sha256 = "1c19pqrys45pzflj5jyrm4q6hcvs977lv6qsfvbnk7nm4skxrqp1";
     };
   };
 
@@ -37,7 +55,9 @@ vim_configurable.customize {
   name = "onethirtyfive-vim";
   vimrcConfig.customRC = builtins.readFile vimrcFile;
   vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // {
+    "dhall-vim" = dhallVim;
     "vim-ack" = vimAck;
+    "vim-css3-syntax" = vimCSS3Syntax;
     "vim-json" = vimJson;
     "vim-terraform" = vimTerraform;
   };
@@ -46,14 +66,17 @@ vim_configurable.customize {
       names = [
         "align"
         "ctrlp"
+        "dhall-vim"
         "fugitive"
         "nerdtree"
+        "purescript-vim"
         "vim-ack"
+        "vim-css3-syntax"
         "vim-json"
         "vim-addon-nix"
         "vim-nix"
         "vim-terraform"
-        # "vim-stylish-haskell"
+        "vim-stylish-haskell"
       ];
     }
   ];
