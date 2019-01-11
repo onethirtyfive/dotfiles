@@ -19,7 +19,6 @@ buildEnv {
 
     onethirtyfiveVim
 
-    nix-repl
     nix-prefetch-scripts
 
     gitAndTools.gitFull
