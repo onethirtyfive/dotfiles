@@ -34,4 +34,5 @@ set ruler
 set wildmode=longest,list
 set wildmenu
 set backspace=2
+set encoding=utf-8
 

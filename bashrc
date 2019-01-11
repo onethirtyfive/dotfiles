@@ -7,7 +7,7 @@ export EDITOR=vim
 # General usefulness:
 alias is="env | grep -i NIX_SHELL"
 alias gs="git status"
-alias vim="onethirtyfive-vim"
+alias vim="onethirtyfive-vim -g -geometry 500x500"
 alias rmswp="find . -name *.swp | xargs rm"
 
 # Ruby:
@@ -36,3 +36,4 @@ GIT_PS1_SHOWCOLORHINTS='true'
 
 # disable freeze on ctrl-s
 stty -ixon
+
