@@ -28,6 +28,11 @@ function fix-keys {
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 7
 }
 
+function fix-keys-dconf {
+  dconf write /org/gnome/desktop/peripherals/keyboard/delay 250
+  dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 7
+}
+
 source $HOME/.dotfiles/sh/git-prompt.sh
 
 PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
@@ -37,3 +42,24 @@ GIT_PS1_SHOWCOLORHINTS='true'
 # disable freeze on ctrl-s
 stty -ixon
 
+# put this either in bashrc or zshrc
+nixify() {
+  if [ ! -e ./.envrc ]; then
+    echo "use nix" > .envrc
+    direnv allow
+  fi
+  if [ ! -e default.nix ]; then
+    cat > default.nix <<'EOF'
+with import <nixpkgs> {};
+stdenv.mkDerivation {
+  name = "env";
+  buildInputs = [
+    bashInteractive
+  ];
+}
+EOF
+    ${EDITOR:-vim} default.nix
+  fi
+}
+
+eval "$(direnv hook bash)"
