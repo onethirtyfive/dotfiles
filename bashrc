@@ -8,6 +8,7 @@ export EDITOR=vim
 alias is="env | grep -i NIX_SHELL"
 alias gs="git status"
 alias vim="onethirtyfive-vim -g -geometry 500x500"
+alias pvim="onethirtyfive-vim"
 alias rmswp="find . -name *.swp | xargs rm"
 
 # Ruby:

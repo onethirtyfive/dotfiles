@@ -25,7 +25,13 @@ buildEnv {
     gitAndTools.tig
 
     keybase
-    (pidgin.override { plugins = [ pidginotr ]; })
+    # (pidgin.override { plugins = [ pidginotr ]; })
+
+    # unfree
+    discord
+    slack
+    google-chrome
+    zoom-us
   ];
 }
 
