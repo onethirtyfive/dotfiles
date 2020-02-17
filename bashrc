@@ -34,6 +34,12 @@ function fix-keys-dconf {
   dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 7
 }
 
+function fix-bells {
+  gsettings set org.gnome.desktop.wm.preferences audible-bell false
+  gsettings set org.gnome.desktop.wm.preferences visual-bell true
+  gsettings set org.gnome.desktop.wm.preferences visual-bell-type frame-flash
+}
+
 source $HOME/.dotfiles/sh/git-prompt.sh
 
 PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
