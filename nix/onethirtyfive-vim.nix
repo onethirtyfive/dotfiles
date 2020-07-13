@@ -76,7 +76,7 @@ vim_configurable.customize {
         "vim-addon-nix"
         "vim-nix"
         "vim-terraform"
-        "vim-stylish-haskell"
+        # "vim-stylish-haskell"
       ];
     }
   ];
