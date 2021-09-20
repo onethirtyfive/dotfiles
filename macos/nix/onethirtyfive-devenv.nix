@@ -1,10 +1,10 @@
 { pkgs
-, onethirtyfiveVim }:
+, onethirtyfiveVim
+, onethirtyfiveVSCode }:
 let
   inherit (pkgs) buildEnv;
 in
 buildEnv {
-
   name = "onethirtyfive-devenv-mac";
   paths = with pkgs; [
     # awscli
@@ -24,13 +24,12 @@ buildEnv {
     terraform
     tree
     gnupg
-    keybase
 
     onethirtyfiveVim
+    onethirtyfiveVSCode
 
     nix-prefetch-scripts
 
     gitAndTools.gitFull
-    gitAndTools.tig
   ];
 }
