@@ -5,7 +5,7 @@ let
   inherit (pkgs) buildEnv;
 in
 buildEnv {
-  name = "onethirtyfive-devenv-mac";
+  name = "onethirtyfive-devenv";
   paths = with pkgs; [
     # awscli
 
