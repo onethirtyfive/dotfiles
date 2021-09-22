@@ -4,26 +4,21 @@ let
   inherit (pkgs) callPackage;
 
   homeDir = builtins.getEnv "HOME";
-  nixDotfiles = "${homeDir}/.dotfiles/macos/nix";
+  dotfiles = "${homeDir}/.dotfiles";
+  commonNix = "${dotfiles}/common/nix";
+  macosNix = "${dotfiles}/macos/nix";
 
-  otfVim = callPackage "${nixDotfiles}/onethirtyfive-vim.nix" { inherit pkgs; };
-  otfVSCode = callPackage "${nixDotfiles}/onethirtyfive-vscode.nix" { inherit pkgs; };
-  otfDevenv = callPackage "${nixDotfiles}/onethirtyfive-devenv.nix" {
-    onethirtyfiveVim = otfVim;
-    onethirtyfiveVSCode = otfVSCode;
+  onethirtyfiveDevenv = callPackage "${macosNix}/onethirtyfive-devenv.nix" {
     inherit pkgs;
+    onethirtyfiveVim = callPackage "${commonNix}/onethirtyfive-vim.nix" { inherit pkgs; };
+    onethirtyfiveVSCode = callPackage "${macosNix}/onethirtyfive-vscode.nix" { inherit pkgs; };
   };
 in
 {
   allowUnfree = true;
 
   packageOverrides = pkgs: rec {
-    onethirtyfiveDevenv = otfDevenv;
+    inherit onethirtyfiveDevenv;
   };
-
-  # pidgin = {
-  #   openssl = true;
-  #   gnutls = true;
-  # };
 }
 

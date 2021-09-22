@@ -15,31 +15,6 @@ alias rmswp="find . -name *.swp | xargs rm"
 alias be="bundle exec"
 alias bert="bundle exec rake"
 
-function fix-font {
-  setfont latarcyrheb-sun32
-}
-
-function game-keys {
-  gsettings set org.gnome.desktop.peripherals.keyboard delay 250
-  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 100
-}
-
-function fix-keys {
-  gsettings set org.gnome.desktop.peripherals.keyboard delay 250
-  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 7
-}
-
-function fix-keys-dconf {
-  dconf write /org/gnome/desktop/peripherals/keyboard/delay 250
-  dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 7
-}
-
-function fix-bells {
-  gsettings set org.gnome.desktop.wm.preferences audible-bell false
-  gsettings set org.gnome.desktop.wm.preferences visual-bell true
-  gsettings set org.gnome.desktop.wm.preferences visual-bell-type frame-flash
-}
-
 source $HOME/.dotfiles/common/sh/git-prompt.sh
 
 PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'

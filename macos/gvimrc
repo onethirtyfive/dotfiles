@@ -4,5 +4,6 @@ set guioptions -=m
 set guioptions -=T
 set guioptions -=L
 set guioptions -=b
+set noeb vb t_vb=
 
 colorscheme murphy

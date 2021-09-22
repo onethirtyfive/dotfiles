@@ -7,13 +7,37 @@ export EDITOR=vim
 # General usefulness:
 alias is="env | grep -i NIX_SHELL"
 alias gs="git status"
-alias vim="onethirtyfive-vim -g -geometry 500x500"
+alias vim="onethirtyfive-vim"
 alias pvim="onethirtyfive-vim"
 alias rmswp="find . -name *.swp | xargs rm"
 
 # Ruby:
 alias be="bundle exec"
 alias bert="bundle exec rake"
+
+function dc {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  docker-compose run --rm base $@
+}
+
+function dcs {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  D_APP_ENV=test docker-compose run --rm base bundle exec rspec --color --backtrace $@
+}
+
+function dcns {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  D_APP_ENV=test docker-compose run --rm base bundle exec rspec --order defined --color --backtrace $@
+}
+
+function dcss {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  D_APP_ENV=test docker-compose run --rm base bundle exec rspec --seed $1 --color --backtrace ${@:2}
+}
 
 function fix-font {
   setfont latarcyrheb-sun32
