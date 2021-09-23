@@ -1,11 +1,11 @@
 { pkgs
-, onethirtyfiveVim
-, onethirtyfiveVSCode }:
+, customVim
+, customVSCode }:
 let
   inherit (pkgs) buildEnv;
 in
 buildEnv {
-  name = "onethirtyfive-devenv";
+  name = "development-environment";
   paths = with pkgs; [
     # awscli
 
@@ -25,11 +25,12 @@ buildEnv {
     tree
     gnupg
 
-    onethirtyfiveVim
-    onethirtyfiveVSCode
+    customVim
+    customVSCode
 
     nix-prefetch-scripts
 
     gitAndTools.gitFull
   ];
 }
+
