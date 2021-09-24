@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 let
   pinnedPkgs = import (builtins.fetchGit {
     name = "nixos-unstable-2021-09-03-vscode-working";
@@ -10,7 +10,7 @@ let
   extensions = (with pinnedPkgs.vscode-extensions; [
     bbenoist.nix
     vscodevim.vim
-  ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+  ] ++ pinnedPkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       name = "nix-env-selector";
       publisher = "arrterian";
       version = "1.0.7";

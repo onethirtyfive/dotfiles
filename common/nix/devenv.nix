@@ -1,17 +1,17 @@
 { pkgs
-, onethirtyfiveVim }:
+, vim
+, vscode }:
 let
   inherit (pkgs) buildEnv;
 in
 buildEnv {
-
-  name = "onethirtyfive-devenv";
+  name = "development-environment";
   paths = with pkgs; [
-    awscli
-
     bash
     bashCompletion
     bashInteractive
+
+    gitAndTools.gitFull
 
     direnv
     wget
@@ -24,26 +24,10 @@ buildEnv {
     terraform
     tree
 
-    onethirtyfiveVim
-
     nix-prefetch-scripts
 
-    gitAndTools.gitFull
-    gitAndTools.tig
-
-    gimp
     gnupg
-    gparted
     keybase
-    libreoffice
-    vlc
-
-    # unfree
-    discord
-    slack
-    spotify
-    google-chrome
-    zoom-us
-  ];
+  ] ++ [ vim vscode ]; # vim not from pkgs
 }
 

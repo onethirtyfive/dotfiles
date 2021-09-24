@@ -7,7 +7,7 @@ syntax enable
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP :pwd'
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.swp', '\.pyc$', '__pycache__']
+let NERDTreeIgnore = ['\.swp', '\.pyc$', '__pycache__', '.DS_Store']
 
 map <C-n> :NERDTreeToggle<CR>
 
