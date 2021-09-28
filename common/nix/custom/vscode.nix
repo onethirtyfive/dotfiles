@@ -10,12 +10,20 @@ let
   extensions = (with pinnedPkgs.vscode-extensions; [
     bbenoist.nix
     vscodevim.vim
-  ] ++ pinnedPkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+  ] ++ pinnedPkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
       name = "nix-env-selector";
       publisher = "arrterian";
       version = "1.0.7";
       sha256 = "0mralimyzhyp4x9q98x3ck64ifbjqdp8cxcami7clvdvkmf8hxhf";
-  }]);
+    }
+    {
+      name = "vscode-standard";
+      publisher = "standard";
+      version = "2.0.0";
+      sha256 = "06rv2vrggib4qdwdryikim0c4z58mvqv3qx62lzqcb8d1jh8wiyp";
+    }
+  ]);
 in pinnedPkgs.vscode-with-extensions.override {
   vscodeExtensions = extensions;
 }
