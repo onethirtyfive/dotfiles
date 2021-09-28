@@ -1,4 +1,4 @@
-source /Users/onethirtyfive/.nix-profile/etc/profile.d/nix.sh
+source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 if [ -n "$IN_NIX_SHELL" ]; then
   echo "In nix shell."
