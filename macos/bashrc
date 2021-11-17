@@ -12,6 +12,7 @@ alias gs="git status"
 alias vim="onethirtyfive-vim -geometry 500x500"
 alias pvim="onethirtyfive-vim"
 alias rmswp="find . -name *.swp | xargs rm"
+alias editvscode="vim ~/Code/dotfiles/common/nix/custom/vscode.nix"
 
 # Ruby:
 alias be="bundle exec"
