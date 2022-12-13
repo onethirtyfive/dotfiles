@@ -20,8 +20,38 @@ let
     {
       name = "vscode-standard";
       publisher = "standard";
-      version = "2.0.0";
-      sha256 = "06rv2vrggib4qdwdryikim0c4z58mvqv3qx62lzqcb8d1jh8wiyp";
+      version = "2.0.1";
+      sha256 = "88amJMLPZH6IaJ4vNkwAKl/LfdlttsblkLB609dpQSw=";
+    }
+    {
+      name = "hexeditor";
+      publisher = "ms-vscode";
+      version = "1.9.1";
+      sha256 = "Yadb7odAZAH0xyXSHuKYNKaQ92am5NwkpOL3uPExH58=";
+    }
+    {
+      name = "vsliveshare";
+      publisher = "MS-vsliveshare";
+      version = "1.0.5615";
+      sha256 = "Zr6vmtEaRA07PLmcU/rnC2fraEZwHr4V3A939j5LKI0=";
+    }
+    {
+      name = "rainbow-csv";
+      publisher = "mechatroner";
+      version = "2.4.0";
+      sha256 = "zQW4Juk5+/51Xq6JsR9K645JRBm8lu6r+sgA6/IwtEU=";
+    }
+    {
+      name = "haskell";
+      publisher = "Haskell";
+      version = "2.2.1";
+      sha256 = "06H4RUmsTOM0ZBFl7NV3T/EBd9NPK0UjUW0s/Q946ZI=";
+    }
+    {
+      name = "language-haskell";
+      publisher = "justusadam";
+      version = "3.6.0";
+      sha256 = "rZXRzPmu7IYmyRWANtpJp3wp0r/RwB7eGHEJa7hBvoQ=";
     }
   ]);
 in pinnedPkgs.vscode-with-extensions.override {

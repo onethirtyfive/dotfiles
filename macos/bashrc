@@ -1,4 +1,4 @@
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+export GIT_PROMPT_FETCH_REMOTE_STATUS=0
 
 if [ -n "$IN_NIX_SHELL" ]; then
   echo "In nix shell."
@@ -30,6 +30,49 @@ fi
 # disable freeze on ctrl-s
 stty -ixon
 
+# set key repeat rates correctly
+
+function dc {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  docker-compose run --rm base $@
+}
+
+function dcs {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  D_APP_ENV=test docker-compose run --rm base bundle exec rspec --color --backtrace $@
+}
+
+function dcns {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  D_APP_ENV=test docker-compose run --rm base bundle exec rspec --order defined --color --backtrace $@
+}
+
+function dcss {
+  source "$(pwd)/script/init"
+  "$(pwd)/script/load-civiqs-mappings"
+  D_APP_ENV=test docker-compose run --rm base bundle exec rspec --seed $1 --color --backtrace ${@:2}
+}
+
+fix-devenv() {
+  defaults write com.apple.dock orientation right
+  defaults write NSGlobalDomain AppleShowScrollBars Always # untested
+  defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+  defaults write NSGlobalDomain NSAutomaticTextCompletionEnabled -bool false
+  defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+}
+
+fix-keys() {
+  defaults write NSGlobalDomain KeyRepeat -int 1
+  defaults write NSGlobalDomain InitialKeyRepeat -int 17
+  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+  defaults write com.apple.Accessibility KeyRepeatDelay 0.5
+  defaults write com.apple.Accessibility KeyRepeatEnabled -int 1
+  defaults write com.apple.Accessibility KeyRepeatInterval 0.083333333
+}
+
 # put this either in bashrc or zshrc
 nixify() {
   if [ ! -e ./.envrc ]; then
@@ -51,8 +94,18 @@ EOF
 }
 
 eval "$(direnv hook bash)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PATH="${PATH}:${HOME}/.civiqs/bin:/opt/homebrew/bin:/opt/homebrew/sbin"
+
+export MAMBA_ROOT_PREFIX=/Users/joshua/.mamba
+export CONDA_ROOT_PREFIX=/Users/joshua/.mamba
+eval "$(${HOME}/.civiqs/bin/micromamba shell hook --shell=zsh)"
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+source "${HOME}/.civiqs/etc/bashrc"
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+

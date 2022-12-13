@@ -8,11 +8,10 @@ buildEnv {
   name = "development-environment";
   paths = with pkgs; [
     bash
-    bashCompletion
+    bash-completion
     bashInteractive
 
-    gitAndTools.gitFull
-
+    nix-direnv
     direnv
     wget
     curl
@@ -21,13 +20,14 @@ buildEnv {
     ack
     jq
     lsof
-    terraform
-    tree
+    htop
+    #tree
 
     nix-prefetch-scripts
 
     gnupg
     keybase
+  # ] ++ [ vscode ]; # vim not from pkgs
   ] ++ [ vim vscode ]; # vim not from pkgs
 }
 
